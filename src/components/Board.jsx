@@ -7,7 +7,7 @@ function Board() {
   const {guesses} = useContext(WordContext);
   
   return (
-    <div className='flex flex-col items-center justify-center'>
+    <div className='flex flex-col items-center justify-center m-2 p-2'>
       <div className='flex flex-col gap-2'>
           {guesses.map((guess, index) => {
         return <div key={index}><Guess guess={guess || ""} /></div> 

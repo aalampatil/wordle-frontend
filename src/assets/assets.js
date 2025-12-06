@@ -1,5 +1,3 @@
-const words = ["react", "index", "loops", "point","async"];
+const wordsList = ["react", "index", "loops", "point","async"];
 
-const dummyGuesses = [[]]
-
-export default words
+export default wordsList
