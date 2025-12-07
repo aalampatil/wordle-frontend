@@ -1,45 +1,55 @@
 import React, { useContext, useEffect, useState } from "react";
 import { WordContext } from "../context/context";
 import Button from "./Button";
+import { FaDeleteLeft } from "react-icons/fa6";
 
 function Keyboard() {
-  const { currentG, setCurrentG, setGuesses } = useContext(WordContext);
+  const { currentG, setCurrentG, setGuesses, setIsCorrect, word, setIsPresent } =
+    useContext(WordContext);
   const [disable, setDisable] = useState(false);
 
-  const handleKeyPress = (key) => {  
-      setCurrentG((prev) => (prev += key));
+  const handleKeyPress = (key) => {
+    setCurrentG((prev) => {
+      if (prev.length >= 5) return prev;
+      return prev + key; //+= can cause bugs
+    });
   };
-  
+
   const remove = () => {
-      setCurrentG((prev) => {
-        if (!prev) return prev;
-        return prev.slice(0, -1); // slice returns new string
-      });
-  }
+    setCurrentG((prev) => {
+      if (!prev) return prev;
+      return prev.slice(0, -1); // slice returns new string
+    });
+  };
 
   const compare = () => {
+    console.log("clicked");
 
-  }
+    if (currentG.length !== 5) return;
+    const results = [];
+    const matchResult = []
+
+    for (let i = 0; i < 5; i++) {
+      results.push(word[i].toUpperCase() === currentG[i]);
+      const c = currentG[i].toUpperCase();
+      const exist = word.includes(c.toLowerCase());
+      matchResult.push(exist && !results[i])
+    }
+
+
+    console.log({ word, results });
+
+    setIsCorrect((prev) => [...prev, results]);
+    setIsPresent((prev) => [...prev, matchResult]);
+    setGuesses((prev) => [...prev, currentG]);
+    setCurrentG("");
+    setDisable(false);
+  };
 
   useEffect(() => {
     //console.log(currentG);
-    if (currentG.length == 5) {
-      setDisable(true);
-    }
 
-    setGuesses((prev) => {
-      const copy = [...prev];
-      for (let i = 0; i < 6; i++) {
-        if (copy[i].length < 5) {
-          copy[i] = currentG;
-          break;
-        }
-      }
-      return copy;
-    });
-    if (currentG.length === 5) {
-      setCurrentG("");
-    }
+    setDisable(currentG.length === 5);
   }, [currentG]);
 
   return (
@@ -77,9 +87,9 @@ function Keyboard() {
         <button
           onClick={compare}
           value={"ENTER"}
-          className={`h-15 w-fit border-2 p-2 text-center font-bold text-white rounded-lg bg-gray-400 hover:cursor-pointer`}
+          className={`h-14 w-fit border-2 p-2 text-center text-2xl bg-neutral-500 font-bold text-white rounded-lg  hover:cursor-pointer`}
         >
-          Enter
+          ENTER
         </button>
         {["Z", "X", "C", "V", "B", "N", "M"].map((char, index) => {
           return (
@@ -93,9 +103,9 @@ function Keyboard() {
         })}
         <button
           onClick={remove}
-          className={`h-15 w-fit border-2 p-2 text-center font-bold text-white rounded-lg bg-gray-400 hover:cursor-pointer`}
+          className={`h-14 w-14 flex items-center justify-center border-2 p-2 text-2xl bg-neutral-500 font-bold text-white rounded-lg hover:cursor-pointer`}
         >
-          Del
+          <FaDeleteLeft />
         </button>
       </div>
     </div>
