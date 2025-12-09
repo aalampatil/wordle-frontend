@@ -3,6 +3,7 @@ import TypingRow from "./TypingRow";
 import EmptyRow from "./EmptyRow.jsx";
 import { WordContext } from "../../context/Context.jsx";
 import CheckedRow from "./CheckedRow";
+import Keyboard from "../Keyboard.jsx";
 
 function Board() {
   const { guesses, currentG, isCorrect, isPresent } = useContext(WordContext);
@@ -10,7 +11,8 @@ function Board() {
   
 
   return (
-    <div className="grid gap-2 items-center justify-center m-2 p-2">
+    <>
+    <div className="grid gap-2 items-center justify-center m-1 p-1">
       {Array.from({ length: 6 }).map((_, rowIndex) => {
         const guess = guesses[rowIndex];
         
@@ -25,6 +27,8 @@ function Board() {
         );
       })}
     </div>
+    <Keyboard />
+    </>
   );
 }
 

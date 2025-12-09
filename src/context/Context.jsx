@@ -13,7 +13,7 @@ export const WordContextProvider = ({ children }) => {
   const pickword = async () => {
     
     const randomIndex = Math.floor(Math.random() * wordsList.length);
-    console.log(wordsList[randomIndex]);
+    //console.log(wordsList[randomIndex]);
     
     setWord(wordsList[randomIndex]);
   };

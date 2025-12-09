@@ -49,10 +49,10 @@ function Keyboard() {
   }, [currentG]);
 
   return (
-    <div className="flex flex-col gap-3 w-full my-4 py-4">
+    <div className="flex flex-col gap-[7px] w-full">
       {/* first row */}
-      <div className="flex flex-row items-center justify-center gap-2 ">
-        {["Q", "W", "E", "R", "T", "Y", "I", "O", "P"].map((char, index) => {
+      <div className="flex flex-row items-center justify-center gap-[5px] ">
+        {["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"].map((char, index) => {
           return (
             <Button
               key={index}
@@ -65,7 +65,7 @@ function Keyboard() {
       </div>
 
       {/* second row */}
-      <div className="flex flex-row items-center justify-center gap-1">
+      <div className="flex flex-row items-center justify-center gap-[5px] ">
         {["A", "S", "D", "F", "G", "H", "J", "K", "L"].map((char, index) => {
           return (
             <Button
@@ -79,11 +79,11 @@ function Keyboard() {
       </div>
 
       {/* third row */}
-      <div className="flex flex-row items-center justify-center gap-1">
+      <div className="flex flex-row items-center justify-center gap-[5px] ">
         <button
           onClick={compare}
           value={"ENTER"}
-          className={`h-14 w-fit border-2 p-2 text-center text-2xl bg-neutral-500 font-bold text-white rounded-lg  hover:cursor-pointer`}
+          className={`h-[58px] w-fit p-2 text-center text-xl bg-neutral-500 font-bold text-white rounded-lg  hover:cursor-pointer`}
         >
           ENTER
         </button>
@@ -99,7 +99,7 @@ function Keyboard() {
         })}
         <button
           onClick={remove}
-          className={`h-14 w-14 flex items-center justify-center border-2 p-2 text-2xl bg-neutral-500 font-bold text-white rounded-lg hover:cursor-pointer`}
+          className={`h-[58px] w-14 flex items-center justify-center p-2 text-xl bg-neutral-500 font-bold text-white rounded-lg hover:cursor-pointer`}
         >
           <FaDeleteLeft />
         </button>
