@@ -3,7 +3,7 @@ import "./App.css";
 import words from "./assets/assets.js";
 import Board from "./components/board/Board.jsx";
 import Navbar from "./components/Navbar.jsx";
-import { WordContext } from "./context/context.jsx";
+import { WordContext } from "./context/Context.jsx";
 import Keyboard from "./components/Keyboard.jsx";
 
 function App() {

@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import { useContext } from "react";
 import TypingRow from "./TypingRow";
 import EmptyRow from "./EmptyRow.jsx";
-import { WordContext } from "../../context/context";
+import { WordContext } from "../../context/Context.jsx";
 import CheckedRow from "./CheckedRow";
 
 function Board() {

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { WordContext } from "../context/context";
+import { WordContext } from "../context/Context.jsx";
 import Button from "./Button";
 import { FaDeleteLeft } from "react-icons/fa6";
 
@@ -23,7 +23,6 @@ function Keyboard() {
   };
 
   const compare = () => {
-    console.log("clicked");
 
     if (currentG.length !== 5) return;
     const results = [];
@@ -31,13 +30,10 @@ function Keyboard() {
 
     for (let i = 0; i < 5; i++) {
       results.push(word[i].toUpperCase() === currentG[i]);
-      const c = currentG[i].toUpperCase();
-      const exist = word.includes(c.toLowerCase());
+      const c = currentG[i];
+      const exist = word.includes(c);
       matchResult.push(exist && !results[i])
     }
-
-
-    console.log({ word, results });
 
     setIsCorrect((prev) => [...prev, results]);
     setIsPresent((prev) => [...prev, matchResult]);

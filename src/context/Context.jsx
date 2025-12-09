@@ -10,8 +10,11 @@ export const WordContextProvider = ({ children }) => {
   const [isCorrect, setIsCorrect] = useState([]);
   const [isPresent, setIsPresent] = useState([]);
 
-  const pickword = () => {
+  const pickword = async () => {
+    
     const randomIndex = Math.floor(Math.random() * wordsList.length);
+    console.log(wordsList[randomIndex]);
+    
     setWord(wordsList[randomIndex]);
   };
 
