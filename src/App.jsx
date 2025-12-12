@@ -6,9 +6,9 @@ import Result from "./components/Result.jsx";
 import { useContext } from "react";
 import { WordContext } from "./context/Context.jsx";
 
-
 function App() {
   const {gameOver} = useContext(WordContext);
+  //yeah i own this repo now
 
   return (
     <div className="bg-neutral-900 w-[100%] min-h-screen">
