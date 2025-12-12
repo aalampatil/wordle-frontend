@@ -1,4 +1,4 @@
-const wordsList = ["REACT", "INDEX", "LOOPS", "POINT","ASYNC"];
+const wordsList = ["REACT", "INDEX", "LOOPS","ASYNC"];
 
 // const wordsList = [
 //     "ALBUM",

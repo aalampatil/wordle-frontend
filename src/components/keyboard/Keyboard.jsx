@@ -11,10 +11,10 @@ function Keyboard() {
     setIsCorrect,
     word,
     setIsPresent,
-    setGameOver,
     gameOver,
   } = useContext(WordContext);
   const [disable, setDisable] = useState(false);
+
 
   const handleKeyPress = (key) => {
     setCurrentG((prev) => {
@@ -31,6 +31,8 @@ function Keyboard() {
   };
 
   const compare = () => {
+    
+    
     if (currentG.length !== 5) return;
     const results = [];
     const matchResult = [];
@@ -42,7 +44,6 @@ function Keyboard() {
       matchResult.push(exist && !results[i]);
     }
 
-    setGameOver(currentG === word);
     setIsCorrect((prev) => [...prev, results]);
     setIsPresent((prev) => [...prev, matchResult]);
     setGuesses((prev) => [...prev, currentG]);
@@ -52,11 +53,12 @@ function Keyboard() {
 
   useEffect(() => {
     //console.log(currentG);
-
     setDisable(currentG.length === 5);
   }, [currentG]);
 
-  return (
+  return gameOver ? (
+    ""
+  ) : (
     <div className="flex flex-col gap-[7px] w-full">
       {/* first row */}
       <div className="flex flex-row items-center justify-center gap-[5px] ">
