@@ -18,15 +18,15 @@ function Result({ show }) {
       className={`mx-52 rounded-md absolute inset-0 flex items-center justify-center border-2 border-white bg-black/60 backdrop-blur-md z-[9999]`}
     >
       <div
-        className="bg-black/60 backdrop-blur-sm h-[250px] w-[250px] px-6 py-4 rounded-xl text-white text-2xl flex flex-col items-center justify-center"
+        className="bg-black/60 backdrop-blur-sm h-[250px] w-[250px] px-6 py-4 rounded-xl text-white text-2xl flex flex-col items-center justify-center gap-4"
       >
         <p>Game Over</p>
         {result === "win" ? (
           <p className="text-green-500">You Win</p>
         ) : (
-          <div>
-            <p>You Lost</p>
-            <p>The word is :{word}</p>
+          <div className="flex flex-col items-center justify-center">
+            <p className="text-sm">You Lost</p>
+            <p className="text-sm">The word was "{word}"</p>
           </div>
         )}
       </div>
