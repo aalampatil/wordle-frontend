@@ -15,7 +15,7 @@ function App() {
       <Navbar />
       <div className="flex flex-col gap-0 relative">
       <Board />
-      {gameOver && <Result />}
+      {gameOver && <Result show={gameOver} />}
       </div>
       <Footer />
     </div>

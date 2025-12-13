@@ -12,6 +12,7 @@ function Keyboard() {
     word,
     setIsPresent,
     gameOver,
+    setChecked
   } = useContext(WordContext);
   const [disable, setDisable] = useState(false);
 
@@ -49,6 +50,7 @@ function Keyboard() {
     setGuesses((prev) => [...prev, currentG]);
     setCurrentG("");
     setDisable(false);
+    setChecked(true)
   };
 
   useEffect(() => {

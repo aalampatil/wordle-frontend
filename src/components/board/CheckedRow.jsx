@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import Tile from "./Tile";
-import { motion } from "motion/react";
+import { WordContext } from "../../context/Context";
 
 function CheckedRow({ word, isCorrect, isPresent }) {
+  const {checked} = useContext(WordContext)
+
   return (
     <div className="flex gap-2">
       {[...Array(5)].map((_, i) => (
@@ -10,6 +13,7 @@ function CheckedRow({ word, isCorrect, isPresent }) {
           char={word[i] || ""}
           isCorrect={isCorrect[i]}
           isPresent={isPresent[i]}
+          checked={checked}
         />
       ))}
     </div>

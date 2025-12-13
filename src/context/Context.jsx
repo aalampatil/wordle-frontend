@@ -9,7 +9,8 @@ export const WordContextProvider = ({ children }) => {
   const [guesses, setGuesses] = useState([]);
   const [isCorrect, setIsCorrect] = useState([]);
   const [isPresent, setIsPresent] = useState([]);
-  const [gameOver, setGameOver] = useState(false)
+  const [gameOver, setGameOver] = useState(false);
+  const [checked, setChecked] = useState(false)
 
   const pickword = async () => {
     
@@ -51,7 +52,9 @@ export const WordContextProvider = ({ children }) => {
     isPresent,
     setIsPresent,
     gameOver,
-    setGameOver
+    setGameOver,
+    checked,
+    setChecked
   };
 
   return <WordContext.Provider value={value}>{children}</WordContext.Provider>;
