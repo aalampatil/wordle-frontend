@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { WordContext } from "../../context/Context.jsx";
 import Button from "./Button";
 import { FaDeleteLeft } from "react-icons/fa6";
@@ -15,8 +15,6 @@ function Keyboard() {
     setChecked,
   } = useContext(WordContext);
 
-  const currentGRef = useRef("");
-  //using reference of currentG because useEffect re render page, which can result in stale state(old state)
   const [disable, setDisable] = useState(false);
 
   const handleKeyPress = (key) => {
@@ -59,8 +57,6 @@ function Keyboard() {
   };
 
   useEffect(() => {
-   
-
     const handler = (event) => {
       console.log(event.key);
       if(event.key === "Backspace"){
@@ -68,11 +64,7 @@ function Keyboard() {
          return;
       }
       
-      //do not directly use state to compare anything and as condition to run something,
-      //because it might be behind the actual state, better use useRef
-      if(event.key === "Enter" && currentGRef.current.length === 5){
-        console.log({currentGRef});
-        
+      if(event.key === "Enter" && currentG.length === 5){
          return compare();
       }
 
@@ -96,7 +88,7 @@ function Keyboard() {
   useEffect(() => {
     //console.log(currentG);
     setDisable(currentG.length === 5);
-    currentGRef.current = currentG;
+    //currentGRef.current = currentG;
   }, [currentG]);
 
   return gameOver ? (
