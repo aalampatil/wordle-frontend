@@ -24,6 +24,8 @@ function ToggleThemeBtn() {
 
 export default ToggleThemeBtn;
 
+//note - read about peer 
+
 {
   /* <label className="relative inline-flex items-center cursor-pointer">
       
