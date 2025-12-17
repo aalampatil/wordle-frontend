@@ -1,24 +1,23 @@
 import React, { useEffect } from "react";
 import { useThemeContext } from "../../context/theme";
-import { button, p } from "motion/react-client";
 
 function ToggleThemeBtn() {
   const { themeMode, setThemeMode, lightMode, darkMode } = useThemeContext();
+
   const changeThemeMode = () => {
     if (themeMode === "light") darkMode();
     else lightMode();
   };
-  
 
   useEffect(() => {
-     const localMode = localStorage.getItem("themeMode");
-     console.log(localMode);
-     if(localMode) setThemeMode(localMode);
-  }, [])
-  
+    const localMode = localStorage.getItem("themeMode"); //json.parse -> json to string
+    console.log(localMode);
+    if (localMode) setThemeMode(localMode);
+  }, []);
+
   useEffect(() => {
-    localStorage.setItem("themeMode", themeMode)
-  },[themeMode])
+    localStorage.setItem("themeMode", themeMode); //json.stringify -> string to json
+  }, [themeMode]);
 
   return (
     <button
@@ -33,7 +32,7 @@ function ToggleThemeBtn() {
 
 export default ToggleThemeBtn;
 
-//note - read about peer 
+//note - read about peer
 
 {
   /* <label className="relative inline-flex items-center cursor-pointer">

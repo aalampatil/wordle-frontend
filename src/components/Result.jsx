@@ -14,15 +14,17 @@ function Result({ show }) {
   }
 
   const handleClick = () => {
+    setTimeout(() => {
       window.location.reload();
+    }, 200)     
   }
 
   return (
     <div
-      className={`mx-52 rounded-md absolute inset-0 flex flex-col items-center justify-center border-2 border-white bg-black/60 backdrop-blur-md z-[9999]`}
+      className={`mx-52 rounded-md absolute inset-0 flex flex-col items-center justify-center border-2 ${result === 'win' ? "border-green-500" : "border-yellow-400"} border-white bg-black/60 backdrop-blur-md z-[9999]`}
     >
       <div
-        className="bg-black/60 backdrop-blur-sm h-[250px] w-[250px] px-6 py-4 rounded-xl text-white text-2xl flex flex-col items-center justify-center gap-4"
+        className="bg-transparent backdrop-blur-sm h-[250px] w-[250px] px-6 py-4 rounded-xl text-white text-2xl flex flex-col items-center justify-center gap-4"
       >
         <p>Game Over</p>
         {result === "win" ? (
