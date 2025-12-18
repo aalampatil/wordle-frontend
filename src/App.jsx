@@ -6,11 +6,10 @@ import Result from "./components/Result.jsx";
 import { useContext, useEffect } from "react";
 import { WordContext } from "./context/Context.jsx";
 import { useThemeContext } from "./context/theme.jsx";
-import { html } from "motion/react-client";
 
 function App() {
   const {gameOver} = useContext(WordContext);
-  const {themeMode, darkMode, lightMode} = useThemeContext()
+  const {themeMode} = useThemeContext()
 
   useEffect(()=>{
     document.querySelector('html').classList.remove("light", "dark")
