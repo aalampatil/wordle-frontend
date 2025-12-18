@@ -6,7 +6,7 @@ import Result from "./components/Result.jsx";
 import { useContext, useEffect } from "react";
 import { WordContext } from "./context/Context.jsx";
 import { useThemeContext } from "./context/theme.jsx";
-
+//created a seperate folder for frontend as moving to backend
 function App() {
   const {gameOver} = useContext(WordContext);
   const {themeMode} = useThemeContext()

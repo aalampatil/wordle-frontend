@@ -34,7 +34,7 @@ function Navbar() {
           className={`absolute top-0 left-0 h-fit w-[250px] bg-white text-black flex flex-col dark:bg-black dark:text-white z-[9999]`}
         >
           <div className="flex items-center justify-start m-2 p-2 border w-fit">
-            <button onClick={() => setShowSideNav(false)}>
+            <button id="close" onClick={() => setShowSideNav(false)}>
               <IoClose />
             </button>
           </div>
