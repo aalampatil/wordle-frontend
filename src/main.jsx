@@ -1,10 +1,9 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
-import { WordContextProvider } from "./context/Word.jsx";
-import { ThemeContextProvider } from "./context/Theme.jsx";
-import { AuthContextProvider } from "./context/Auth.jsx";
+import { WordContextProvider } from "./context/Word";
+import { ThemeContextProvider } from "./context/Theme";
+import { AuthContextProvider } from "./context/Auth";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import Protected from "./components/Protected.jsx";
