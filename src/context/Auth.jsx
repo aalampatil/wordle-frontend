@@ -22,10 +22,10 @@ export const AuthContextProvider = ({ children }) => {
   //this req will verified if user is authenticated or not
   const verified = async () => {
     try {
-      const response = await axios.get(`${backendUrl}/user/verified`, {
+      const response = await axios.get(`${backendUrl}/user/verified`, { //axios.req(url,data,config)
         withCredentials: true,
       });
-      console.log(response.data);
+      // console.log(response.data);
       if (response.data.success) {
         setUser(response.data.data);
         setAuthStatus(true);
