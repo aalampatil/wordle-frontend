@@ -8,9 +8,6 @@ import { useEffect, useState } from "react";
 
 function Navbar() {
   const [showSideNav, setShowSideNav] = useState(false);
-  useEffect(() => {
-    console.log(showSideNav);
-  }, [showSideNav]);
 
   const sideNavOptions = [
     "Account",
@@ -31,18 +28,36 @@ function Navbar() {
       </button>
       {showSideNav && (
         <div
-          className={`absolute top-0 left-0 h-fit w-[250px] bg-white text-black flex flex-col dark:bg-black dark:text-white z-[9999]`}
+          className={`
+    fixed top-0 left-0 h-full w-[260px] bg-white dark:bg-zinc-900 text-zinc-80 dark:text-zinc-100 shadow-xl flex flex-col z-[9999] transition-transform duration-300 ease-in-out
+  `}
         >
-          <div className="flex items-center justify-start m-2 p-2 border w-fit">
-            <button id="close" onClick={() => setShowSideNav(false)}>
-              <IoClose />
+          {/* Header */}
+          <div className="flex items-center justify-between px-4 py-3 border-b dark:border-zinc-700">
+            <h2 className="text-lg font-semibold">Menu</h2>
+            <button
+              id="close"
+              onClick={() => setShowSideNav(false)}
+              className="p-2 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800 transition"
+              aria-label="Close menu"
+            >
+              <IoClose size={20} />
             </button>
           </div>
-          {sideNavOptions.map((option, i) => (
-            <p key={i} className="w-full justify-start text-start p-2 border-b">
-              {option}
-            </p>
-          ))}
+
+          {/* Navigation */}
+          <nav className="flex flex-col mt-2">
+            {sideNavOptions.map((option, i) => (
+              <button
+                key={i}
+                className="
+          text-left px-4 py-3 text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800
+          transition focus:outline-none focus:bg-zinc-200 dark:focus:bg-zinc-700"
+              >
+                {option}
+              </button>
+            ))}
+          </nav>
         </div>
       )}
 

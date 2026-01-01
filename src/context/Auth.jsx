@@ -5,10 +5,9 @@ const authContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [authStatus, setAuthStatus] = useState(false)
+  const [authStatus, setAuthStatus] = useState(false);
   const [loading, setLoading] = useState(true);
-  const backendUrl = import.meta.env.MODE ?import.meta.env.SERVER : import.meta.env.VITE_BACKEND_URL;
-
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   //this request will redirect to consent screen
   const googleAuth = async () => {
@@ -19,24 +18,48 @@ export const AuthContextProvider = ({ children }) => {
       console.error(error.message);
     }
   };
-  
 
   //this req will verified if user is authenticated or not
   const verified = async () => {
-  try {
-      const response = await axios.get(`${backendUrl}/user/verified`, {withCredentials: true})
-      //console.log(response.data);      
-      if(response.data.success) {
-        setUser(response.data.data)
-        setAuthStatus(true)
-      }       
+    try {
+      const response = await axios.get(`${backendUrl}/user/verified`, {
+        withCredentials: true,
+      });
+      console.log(response.data);
+      if (response.data.success) {
+        setUser(response.data.data);
+        setAuthStatus(true);
+      }
     } catch (error) {
-      console.log(error.message);
-      setUser(null) 
+      if (error.response?.status === 401) {
+        console.log("refreshing tokens");
+        try {
+          const response = await axios.post(
+            `${backendUrl}/user/refresh-tokens`,
+            {},
+            {
+              withCredentials: true,
+            }
+          );
+          if (response.data.success) {
+            setUser(response.data.data);
+            setAuthStatus(true);
+          } else {
+            setUser(null);
+            setAuthStatus(false);
+          }
+        } catch (error) {
+          setUser(null);
+          setAuthStatus(false);
+        }
+      } else {
+        setUser(null);
+        setAuthStatus(false);
+      }
     } finally {
-       setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const value = { user, loading, backendUrl, googleAuth, authStatus };
 
