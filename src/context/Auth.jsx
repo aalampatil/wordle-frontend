@@ -22,7 +22,8 @@ export const AuthContextProvider = ({ children }) => {
   //this req will verified if user is authenticated or not
   const verified = async () => {
     try {
-      const response = await axios.get(`${backendUrl}/user/verified`, { //axios.req(url,data,config)
+      const response = await axios.get(`${backendUrl}/user/verified`, {
+        //axios.req(url,data,config)
         withCredentials: true,
       });
       // console.log(response.data);
@@ -61,7 +62,30 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
-  const value = { user, loading, backendUrl, googleAuth, authStatus };
+  const logoutUser = async () => {
+    try {
+      await axios.post(
+        `${backendUrl}/user/logout`,
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+      setUser(null);
+      setAuthStatus(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const value = {
+    user,
+    loading,
+    backendUrl,
+    googleAuth,
+    authStatus,
+    logoutUser,
+  };
 
   useEffect(() => {
     verified();

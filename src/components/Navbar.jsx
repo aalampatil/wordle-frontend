@@ -5,6 +5,7 @@ import { FaGear } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import ToggleThemeBtn from "./ToggleThemeBtn/ToggleThemeBtn";
 import { useEffect, useState } from "react";
+import Logout from "./Logout";
 
 function Navbar() {
   const [showSideNav, setShowSideNav] = useState(false);
@@ -72,6 +73,7 @@ function Navbar() {
         <p className="text-2xl">
           <FaGear />
         </p>
+        <Logout />
       </div>
     </div>
   );
