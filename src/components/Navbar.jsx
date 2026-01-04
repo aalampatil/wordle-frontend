@@ -30,7 +30,7 @@ function Navbar() {
       {showSideNav && (
         <div
           className={`
-    fixed top-0 left-0 h-full w-[260px] text-black bg-white dark:bg-zinc-900 text-zinc-80 shadow-xl flex flex-col z-[9999] transition-transform duration-300 ease-in-out
+    fixed top-0 left-0 h-full w-[260px] text-black bg-white dark:bg-zinc-900 dark:text-white shadow-xl flex flex-col z-[9999] transition-transform duration-300 ease-in-out
   `}
         >
           {/* Header */}
