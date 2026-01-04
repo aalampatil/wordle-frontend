@@ -7,7 +7,9 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [authStatus, setAuthStatus] = useState(false);
   const [loading, setLoading] = useState(true);
-  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+  const backendUrl = import.meta.env.MODE === "development" ? import.meta.env.VITE_BACKEND_URL : import.meta.env.SERVER;
+  console.log("mode", import.meta.env.MODE);
+  
 
   //this request will redirect to consent screen
   const googleAuth = async () => {
@@ -26,7 +28,7 @@ export const AuthContextProvider = ({ children }) => {
         //axios.req(url,data,config)
         withCredentials: true,
       });
-      // console.log(response.data);
+      //console.log(response.data.data);
       if (response.data.success) {
         setUser(response.data.data);
         setAuthStatus(true);
@@ -89,6 +91,8 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     verified();
+    
+    
   }, []);
   return <authContext.Provider value={value}>{children}</authContext.Provider>;
 };
