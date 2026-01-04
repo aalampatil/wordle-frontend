@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className="bg-white dark:bg-neutral-900 w-[100%] min-h-screen">
-      <Outlet /> // i was rendering this as variable but outlet is a component
+      <Outlet />
     </div>
   );
 }

@@ -30,11 +30,11 @@ function Navbar() {
       {showSideNav && (
         <div
           className={`
-    fixed top-0 left-0 h-full w-[260px] bg-white dark:bg-zinc-900 text-zinc-80 dark:text-zinc-100 shadow-xl flex flex-col z-[9999] transition-transform duration-300 ease-in-out
+    fixed top-0 left-0 h-full w-[260px] text-black bg-white dark:bg-zinc-900 text-zinc-80 shadow-xl flex flex-col z-[9999] transition-transform duration-300 ease-in-out
   `}
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 border-b dark:border-zinc-700">
+          <div className="flex items-center justify-between px-4 py-3 border-b dark:border-zinc-700 ">
             <h2 className="text-lg font-semibold">Menu</h2>
             <button
               id="close"
