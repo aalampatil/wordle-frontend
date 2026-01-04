@@ -7,8 +7,10 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [authStatus, setAuthStatus] = useState(false);
   const [loading, setLoading] = useState(true);
-  const backendUrl = import.meta.env.MODE === "development" ? import.meta.env.VITE_BACKEND_URL : import.meta.env.SERVER;
+  const backendUrl = import.meta.env.MODE === "production" ? import.meta.env.VITE_SERVER : import.meta.env.VITE_BACKEND_URL;
   console.log("mode", import.meta.env.MODE);
+  console.log(backendUrl);
+  
   
 
   //this request will redirect to consent screen
