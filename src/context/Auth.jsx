@@ -93,11 +93,8 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
       verified();
-    }, 800); // give cookies time to attach (mobile)
-
-    return () => clearTimeout(timer);
+    
   }, []);
   return <authContext.Provider value={value}>{children}</authContext.Provider>;
 };
