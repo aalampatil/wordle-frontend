@@ -7,11 +7,12 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [authStatus, setAuthStatus] = useState(false);
   const [loading, setLoading] = useState(true);
-  const backendUrl = import.meta.env.MODE === "production" ? import.meta.env.VITE_SERVER : import.meta.env.VITE_BACKEND_URL;
+  const backendUrl =
+    import.meta.env.MODE === "production"
+      ? import.meta.env.VITE_SERVER
+      : import.meta.env.VITE_BACKEND_URL;
   console.log("mode", import.meta.env.MODE);
   console.log(backendUrl);
-  
-  
 
   //this request will redirect to consent screen
   const googleAuth = async () => {
@@ -92,9 +93,11 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    verified();
-    
-    
+    const timer = setTimeout(() => {
+      verified();
+    }, 800); // give cookies time to attach (mobile)
+
+    return () => clearTimeout(timer);
   }, []);
   return <authContext.Provider value={value}>{children}</authContext.Provider>;
 };
