@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useThemeContext } from "./context/Theme.jsx";
 import { Outlet } from "react-router-dom";
 import { useAuthContext } from "./context/Auth.jsx";
+import Navbar from "./components/Navbar.jsx";
+import Footer from "./components/Footer/Footer.jsx"
 
 function App() {
   const { themeMode } = useThemeContext();
@@ -16,7 +18,9 @@ function App() {
 
   return (
     <div className="bg-white dark:bg-neutral-900 w-[100%] min-h-screen">
+      <Navbar />
       <Outlet />
+      <Footer />
     </div>
   );
 }

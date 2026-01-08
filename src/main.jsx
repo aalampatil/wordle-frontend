@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import Protected from "./components/Protected.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
+import Account from "./components/Account.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,14 @@ const router = createBrowserRouter([
           </Protected>
         ),
       },
+      {
+        path: "/account",
+        element: (
+          <Protected authentication >
+            <Account />
+          </Protected>
+        )
+      }
     ],
   },
 ]);

@@ -6,6 +6,7 @@ import { IoClose } from "react-icons/io5";
 import ToggleThemeBtn from "./ToggleThemeBtn/ToggleThemeBtn";
 import { useEffect, useState } from "react";
 import Logout from "./Logout";
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
   const [showSideNav, setShowSideNav] = useState(false);
@@ -49,14 +50,15 @@ function Navbar() {
           {/* Navigation */}
           <nav className="flex flex-col mt-2">
             {sideNavOptions.map((option, i) => (
-              <button
+              <NavLink
+              to={`/${option.toLowerCase().trim()}`}
                 key={i}
                 className="
           text-left px-4 py-3 text-sm font-medium hover:bg-zinc-100 dark:hover:bg-zinc-800
           transition focus:outline-none focus:bg-zinc-200 dark:focus:bg-zinc-700"
               >
                 {option}
-              </button>
+              </NavLink>
             ))}
           </nav>
         </div>
